@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:utext="${title}"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:if="${#request.getParameter('errorRe') == 'true'}">
+        $(document).ready(function() {
+            $('#myModal').modal();
+        });
+    </script>
+    <style>
+        .error {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<th:block th:include="/_menu"></th:block>
+<div class="container " style="margin-top: 100px;">
+    <div class="row">
+        <div class="col-sm-6 col-md-5 hidden-xs hidden-sm border-right">
+            <h1 class="logo ">
+                <span class="word1 mr-auto">Kit</span>
+                <span class="word2">Car</span>
+            </h1>
+        </div>
+        <div class="col-sm-12 col-xs-12 col-md-4 ">
+            <div class="space-top pl-2" th:if="${#request.getUserPrincipal() == null}">
+                <h3 class="text-center">Sign In</h3>
+                <form name="f" th:action="@{/j_spring_security_check}"  class="form-signin form-horizontal"  method="POST" >
+                    <div th:if="${#request.getParameter('error') == 'true'}" style="color:red;margin:10px 0px;">
+                        Login Failed!!!<br />
+                        Reason :
+                        <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+                              th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                                Static summary
+                        </span>
+
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="username" required name="username">
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="password" name="password">
+                    </div>
+                    <div class="row justify-content-start remember">
+                        <input type="checkbox" name="remember-me">Remember Me
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Login
+                    </button>
+                </form>
+                <p class="text-center"> I don't have account!  <a href="#myModal"  data-toggle="modal" data-target="#myModal"> Sign Up!</a></p>
+            </div>
+
+
+
+
+            <!-- Modal -->
+            <form class="modal fade"  id="myModal" th:action="@{/register}" th:object="${appUserForm}" method="post">
+                <div   role="dialog" aria-labelledby="myModalLabel" style="margin-top: 100px;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">Welcome to Kit Car!</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div th:if="${errorMessage != null}"
+                                     th:utext="${errorMessage}" class="error">...</div>
+
+                                <div class="form-group">
+                                    <label class="label-register">Full Name</label>
+                                    <input type="text" class="form-control" name="fullname" th:field="*{fullName}" placeholder="Enter your full name">
+
+                                    <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-register">Gender</label>
+                                    <select th:field="*{gender}">
+                                        <option value=""> -- </option>
+                                        <option class="d-flex justify-content-md-start" value="M"><h6>Male</h6></option>
+                                        <option class="d-flex justify-content-md-start" value="F"><h6>Female</h6></option>
+                                    </select>
+                                    <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">..</span>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="label-register">User Name</label>
+                                    <input th:field="*{userName}" type="text" class="form-control" name="username" placeholder="Enter your user name">
+                                    <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">..</span>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="label-register" >E-mail</label>
+                                    <input th:field="*{email}" type="email" class="form-control" name="email" placeholder="Enter your e-mail!" >
+                                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">..</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-register">Password</label>
+                                    <input th:field="*{password}" type="password" class="form-control" name="password" placeholder="*****" required>
+                                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="label-register">Confirm password</label>
+                                    <input th:field="*{confirmPassword}" type="password" class="form-control" id="passwordconfirm" placeholder="******" required>
+                                    <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">..</span>
+                                </div>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <div class="pull-left">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

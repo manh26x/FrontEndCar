@@ -1,0 +1,158 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+body{
+    background-color: #263238;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+h3{
+    color:#ecf0f1;
+}
+p{
+    padding-top:10px;
+    color:#ecf0f1;
+    font-size:1.0em;
+}
+a{
+    color:#f1c40f;
+}
+a:hover {
+    color: #efa039;
+    text-decoration: none;
+}
+label {
+    color:#ecf0f1;
+    padding-top:10px;
+    font-size:1.6rem;
+}
+.label-register{
+    color:rgba(0, 109, 128, 0.52);
+}
+.remember{
+    color: white;
+}
+.remember input
+{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+button{
+    margin-top:20px;
+}
+.border-login{
+    border-right:1px solid #fff;
+    min-height:450px;
+    float:right;
+}
+.space-top{
+    padding-top:50px;
+}
+.modal-header {
+    min-height: 16.42857143px;
+    padding: 9px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #263238;
+    color: #fff;
+    border-top: 1px solid #e65100;
+    border-radius: 0;
+}
+.modal-footer {
+    padding: 9px;
+    text-align: right;
+    border-top: 1px solid #607D8B;
+}
+.modal-content {
+    position: relative;
+    background-color: #CFD8DC;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border-left: 1px solid #e65100;
+    border-right: 1px solid #e65100;
+    border-bottom: 1px solid #e65100;
+    border-radius: 0;
+    outline: 0;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    /* border: 1px solid transparent; */
+    border-radius: 3px;
+}
+.logo {
+    font: 84px 'Arial Narrow', sans-serif;/* I picked this font because it's the closest looking 'web safe' font http://cssfontstack.com/ */
+    color: #fefefe;
+    text-transform: uppercase;
+    letter-spacing: -4px;
+    align: center;
+    margin-top: 20%;
+}
+/* stuff for both words */
+.logo span {
+    position: relative;
+}
+.logo span:before,
+.logo span:after {
+    content: '';
+    position: absolute;
+    border-width: 32px;/* makes a nice, big 64px square */
+    border-style: solid;
+    border-color: transparent;
+    height: 0;
+    z-index: 10;
+}
+/* stuff for 1st word */
+.logo .word1 {
+    color: #dc006c;
+    margin-right: -38px;
+    transform: rotateY(180deg);/* using Prefix free */
+    display: flex;/* required for transform */
+    z-index: 10;/* stack 1st word on top */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.logo .word1:before {
+    right: -3px;/* would be left, but we flipped the word */
+    top: -9px;
+    border-top-color: #282828;/* match background color */
+    border-right-color: #282828;/* would be left, but we flipped the word */
+}
+.logo .word1:after {
+    left: 17px;/* would be right, but we flipped the word */
+    bottom: -15px;
+    border-bottom-color: #282828;
+    border-left-color: #282828;/* would be right, but we flipped the word */
+}
+/* stuff for 2nd word */
+.logo .word2 {
+    z-index: 0;/* stack 2nd word below */
+}
+.logo .word2:before {
+    left: -4px;
+    top: -6px;
+    border-top-color: #282828;
+    border-left-color: #282828;
+}
+.logo .word2:after {
+    right: -4px;
+    bottom: 4px;
+    border-bottom-color: #282828;
+    border-right-color: #282828;
+}

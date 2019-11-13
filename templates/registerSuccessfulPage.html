@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Successfully registered</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        span {color: blue;}
+        #contain {
+            margin-top:200px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+<div class="container" id="contain">
+    <h2>You have successfully registered!</h2>
+
+    <div th:if="${flashUser != null}">
+        <ul>
+            <li>User Name: <span th:utext="${flashUser.userName}">..</span></li>
+            <li>Full Name: <span th:utext="${flashUser.fullName}">..</span></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

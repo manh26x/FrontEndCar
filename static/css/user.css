@@ -1,0 +1,95 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+body{
+    background-color: #d9d9d9;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.devices {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+}
+
+.button {
+    display: inline-block;
+    height: 38px;
+    padding: 0 30px;
+    color: #555;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.button:hover {
+    color: #333;
+    border-color: #888;
+    outline: 0;
+}
+.devices figure {
+        border: solid 1px #e1e1e1;
+        margin: 5px 10px;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background: white;
+        animation: isShowing 1s 0s ease-in-out infinite;
+        animation-iteration-count: 1;
+        position: relative;
+        overflow:hidden;
+        cursor: pointer;
+}
+@keyframes  isShowing{
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);;
+    }
+
+}
+
+.device img {
+    display: block;
+    width: 95%;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 40px;
+    border-radius: 5px ;
+}
+
+.devices figure:hover img{
+    transform: scale(1.1);
+}
+.devices figure:hover figcaption{
+    left: 0%;
+}
+.device figcaption {
+    position: absolute;
+    bottom: 0px;
+    left: -150px;
+    background:black;
+    color:white;
+    padding: 2px 8px;
+    font-size:15px;
+    transition: all 0.2s ease-in;
+    margin-bottom: 80px;
+}
+
+.device h5 {
+    font-size: 1.4em;
+    margin-top: 0px;
+    color: rgb(75,75,75);
+    margin-bottom: 20px;
+}
+

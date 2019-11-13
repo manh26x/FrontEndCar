@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Control</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/control.css}">
+    <!-- https://cdnjs.com/libraries/sockjs-client -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js"></script>
+    <!-- https://cdnjs.com/libraries/stomp.js/ -->
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="/js/control.js"></script>
+
+</head>
+<body>
+    <th:block th:include="/_menu"></th:block>
+    <div class="container">
+        <div th:unless="${canControl}">
+            <h2>You cann't control this device!</h2>
+            <a href="/userInfo">Go to your device list</a>
+        </div>
+        <div class="key-control" th:if="${canControl}">
+                <h1 > </h1>
+                <figure id="ahead">
+                    <p id="ahed"></p>
+                </figure>
+                <h1> </h1>
+                <figure id="left">
+                    <p></p>
+                </figure>
+                <figure id="down">
+                    <p></p>
+                </figure>
+                <figure id="right">
+                    <p></p>
+                </figure>
+        </div>
+    </div>
+</body>
+</html>

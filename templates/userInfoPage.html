@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UserInfo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/user.css}">
+</head>
+<body>
+    <th:block th:include="/_menu"></th:block>
+
+    <div style="margin-top: 100px" class="container">
+        <h2 th:utext="'Hi ' + ${fullName} + '!' "></h2>
+        <h3>Your devices</h3>
+        <div class="devices " th:each="device: ${devicesList}">
+            <figure class="isshowing device ">
+                <h5 th:utext="${device.getDeviceName()}"></h5>
+                <img th:src="@{/images/} + ${device.getDevice_Id()} + .jpg">
+                <figcaption th:utext="${device.getDecryption()}"></figcaption>
+                <a th:href="@{/topic/} + ${device.getTopicId(topicList, device.getDevice_Id())}" class="button">Control it</a>
+            </figure>
+        </div>
+    </div>
+</body>
+</html>

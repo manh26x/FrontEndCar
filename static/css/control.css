@@ -1,0 +1,50 @@
+body {
+    padding-top: 200px;
+
+}
+
+.key-control {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    max-width: 300px;
+}
+
+.key-control figure {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+    transition: 0.2s;
+}
+.key-control figure p {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(54, 96, 117);
+
+    opacity: 0.8;
+    border-radius: 9px;
+}
+.key-control  h1 {
+    padding-top: 18px;
+    padding-left: 15px;
+}
+
+
+#ahead {
+    background-image: url(../images/ahead.png);
+}
+
+#left {
+    background-image: url(../images/left.png);
+}
+
+#down {
+    background-image: url(../images/down.png);
+}
+#right {
+    background-image: url(../images/right.png);
+}
